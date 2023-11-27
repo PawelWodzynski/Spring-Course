@@ -1,2 +1,28 @@
+# Ignore the .idea directory
+.idea/
+
+# Ignore configuration files for IntelliJ
 *.iml
-.idea
+*.iws
+*.ipr
+
+# Ignore the target directory
+target/
+
+# Ignore Maven configuration files
+mvn_settings.xml
+
+# Ignore the .gradle directory
+.gradle/
+
+# Ignore Eclipse project files
+.classpath
+.project
+.settings/
+
+# Ignore the build directory
+build/
+
+# Ignore directories for various environments
+out/
+
