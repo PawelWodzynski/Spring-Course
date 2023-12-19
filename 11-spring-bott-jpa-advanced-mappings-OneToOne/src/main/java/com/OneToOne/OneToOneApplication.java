@@ -13,10 +13,6 @@ public class OneToOneApplication {
 		SpringApplication.run(OneToOneApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner(){
-		return runner ->{
-			System.out.println("Hello world");
-		};
-	}
+
+
 }
