@@ -3,7 +3,6 @@ package com.OneToOne;
 import com.OneToOne.dao.AppDAO;
 import com.OneToOne.entity.Instructor;
 import com.OneToOne.entity.InstructorDetail;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,17 +12,17 @@ import org.springframework.context.annotation.Bean;
 public class OneToOneApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OneToOneApplication.class, args);
+		SpringApplication.run(com.OneToOne.OneToOneApplication.class, args);
 	}
 
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner ->{
-			//createInstructor(appDAO);
+			createInstructor(appDAO);
 
 			//findInstructor(appDAO);
 
-			deleteInstructor(appDAO);
+//			deleteInstructor(appDAO);
 		};
 	}
 
