@@ -37,6 +37,7 @@ public class OneToOneApplication {
 	}
 
 	private void findInstructor(AppDAO appDAO) {
+
 		int theId = 1;
 		System.out.println("Finding instructor id: " + theId);
 
@@ -47,6 +48,7 @@ public class OneToOneApplication {
 	}
 
 	private void createInstructor(AppDAO appDAO) {
+
 
 		// create the instructor
 		Instructor tempInstructor = new Instructor("pahmet","wodzabala","oilrafinery@turban.com");
