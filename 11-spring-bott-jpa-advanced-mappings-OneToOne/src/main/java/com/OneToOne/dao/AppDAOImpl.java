@@ -4,9 +4,9 @@ import com.OneToOne.entity.Instructor;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public class AppDAOImpl implements AppDAO{
 
     // define field for entity manager
@@ -24,5 +24,20 @@ public class AppDAOImpl implements AppDAO{
     @Transactional
     public void save(Instructor theInstructor) {
         entityManager.persist(theInstructor);
+    }
+
+    @Override
+    public Instructor findInstructorById(int theID) {
+        return entityManager.find(Instructor.class,theID);
+    }
+
+    @Override
+    @Transactional
+    public void deleteInstructorById(int theId) {
+        // retrieve the instructor
+        Instructor tempInstructor = entityManager.find(Instructor.class, theId);
+
+        // delete the instructor
+        entityManager.remove(tempInstructor);
     }
 }
