@@ -1,6 +1,7 @@
 package com.OneToOne.dao;
 
 import com.OneToOne.entity.Instructor;
+import com.OneToOne.entity.InstructorDetail;
 
 public interface AppDAO {
 
@@ -11,4 +12,6 @@ public interface AppDAO {
 
 
     void deleteInstructorById(int theId);
+
+    InstructorDetail findInstructorDetailById(int theId);
 }
