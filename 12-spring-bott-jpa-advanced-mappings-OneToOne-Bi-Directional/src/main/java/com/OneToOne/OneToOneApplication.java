@@ -20,18 +20,20 @@ public class OneToOneApplication {
 		return runner ->{
 //			createInstructor(appDAO);
 
-			//findInstructor(appDAO);
+//			findInstructor(appDAO);
 
 //			deleteInstructor(appDAO);
 
 //			findInstructorDetail(appDAO);
 
 			deleteInstructorDetail(appDAO);
+
+
 		};
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO) {
-			int theId = 2;
+			int theId = 3;
 		System.out.println("Deleting instructor detail id: " + theId);
 
 		appDAO.deleteInstructorDetailById(theId);
