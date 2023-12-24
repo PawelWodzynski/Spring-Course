@@ -1,6 +1,7 @@
 package com.OneToOne;
 
 import com.OneToOne.dao.AppDAO;
+import com.OneToOne.entity.Course;
 import com.OneToOne.entity.Instructor;
 import com.OneToOne.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -26,10 +27,43 @@ public class OneToOneApplication {
 
 //			findInstructorDetail(appDAO);
 
-			deleteInstructorDetail(appDAO);
+//			deleteInstructorDetail(appDAO);
 
+			createInstructorWithCourses(appDAO);
 
 		};
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+
+		// create the instructor
+		Instructor tempInstructor = new Instructor("pahmet","wodzabala","oilrafinery@turban.com");
+
+		// create the Instructor Detail
+		InstructorDetail tempInstructorDetail= new InstructorDetail("youtube.com/gaming","video games");
+
+		// associate the objects
+		tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+		// create some courses
+		Course tempCourse1 = new Course ("Java - The Ultimate Guide");
+		Course temoCourse2 = new Course("Java - CRUD App");
+
+		// add course to instructor
+		tempInstructor.add(tempCourse1);
+		tempInstructor.add(temoCourse2);
+
+		// save the instructor
+		//
+		// NOTE: this will ALSO save the courses
+		// because of CascadeType.PERSIST
+		//
+		System.out.println("Saving instructor: " + tempInstructor);
+		System.out.println("The courses: " +  tempInstructor.getCourses());
+		appDAO.save(tempInstructor);
+
+
+		System.out.println("DONE");
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO) {
@@ -77,7 +111,7 @@ public class OneToOneApplication {
 
 
 		// create the instructor
-		Instructor tempInstructor = new Instructor("pahmet","wodzabala","oilrafinery@turban.com");
+Instructor tempInstructor = new Instructor("pahmet","wodzabala","oilrafinery@turban.com");
 
 		// create the Instructor Detail
 		InstructorDetail tempInstructorDetail= new InstructorDetail("youtube.com/pandaisblackitiswhiteanditisasian","zoo");
