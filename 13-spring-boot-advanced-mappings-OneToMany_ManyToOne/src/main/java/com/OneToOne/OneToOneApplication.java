@@ -35,8 +35,24 @@ public class OneToOneApplication {
 
 //			findInstructorWithCourse(appDAO);
 
-			findCoursesForInstructor(appDAO); // find instructor courses by id witch LAZY fetch type
+//			findCoursesForInstructor(appDAO); // find instructor courses by id witch LAZY fetch type
+
+			findInstructorWithCoursesJoinFetch(appDAO);
 		};
+	}
+
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+
+		int theId = 1;
+
+		// find the instructor
+		System.out.println("finding instructor ID: " + theId);
+		Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
+
+		System.out.println("tempInstructor: " + tempInstructor);
+//		System.out.println("the associated courses: " + tempInstructor.getCourses());
+
+		System.out.println("DONE");
 	}
 
 	private void findCoursesForInstructor(AppDAO appDAO) {
