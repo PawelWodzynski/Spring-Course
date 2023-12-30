@@ -41,7 +41,10 @@ public class OneToOneApplication {
 
 //			updateInstructor(appDAO);
 
-			updateCourse(appDAO);
+//			updateCourse(appDAO);
+
+			deleteInstructor(appDAO);
+
 		};
 	}
 
