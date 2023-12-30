@@ -39,8 +39,28 @@ public class OneToOneApplication {
 
 //			findInstructorWithCoursesJoinFetch(appDAO);
 
-			updateInstructor(appDAO);
+//			updateInstructor(appDAO);
+
+			updateCourse(appDAO);
 		};
+	}
+
+	private void updateCourse(AppDAO appDAO) {
+
+		int theId = 10; // verify the course ID
+
+		// find the course
+		System.out.println("Finding course id: " + theId);
+		Course tempCourse = appDAO.findCourseById(theId);
+
+		// update the course
+		System.out.println("Updating Course id: " + theId);
+		tempCourse.setTitle("TEST");
+
+		appDAO.update(tempCourse);
+
+		System.out.println("DONE");
+
 	}
 
 	private void updateInstructor(AppDAO appDAO) {
