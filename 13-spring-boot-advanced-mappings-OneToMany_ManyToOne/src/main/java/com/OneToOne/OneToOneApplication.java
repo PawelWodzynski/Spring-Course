@@ -37,8 +37,27 @@ public class OneToOneApplication {
 
 //			findCoursesForInstructor(appDAO); // find instructor courses by id witch LAZY fetch type
 
-			findInstructorWithCoursesJoinFetch(appDAO);
+//			findInstructorWithCoursesJoinFetch(appDAO);
+
+			updateInstructor(appDAO);
 		};
+	}
+
+	private void updateInstructor(AppDAO appDAO) {
+
+		int theId = 1;
+
+		// find the instructor
+		System.out.println("Finding instructor id: " + theId);
+		Instructor tempInstructor = appDAO.findInstructorById(theId);
+
+		// update the instuctor
+		System.out.println("Updating instructor id: " + theId);
+		tempInstructor.setLastName("TESTER");
+
+		appDAO.update(tempInstructor);
+
+		System.out.println("DONE!");
 	}
 
 	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
@@ -50,7 +69,7 @@ public class OneToOneApplication {
 		Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
 
 		System.out.println("tempInstructor: " + tempInstructor);
-//		System.out.println("the associated courses: " + tempInstructor.getCourses());
+		System.out.println("the associated courses: " + tempInstructor.getCourses());
 
 		System.out.println("DONE");
 	}
