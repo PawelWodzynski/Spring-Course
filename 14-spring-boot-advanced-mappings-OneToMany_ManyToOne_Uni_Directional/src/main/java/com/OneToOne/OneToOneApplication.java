@@ -4,6 +4,7 @@ import com.OneToOne.dao.AppDAO;
 import com.OneToOne.entity.Course;
 import com.OneToOne.entity.Instructor;
 import com.OneToOne.entity.InstructorDetail;
+import com.OneToOne.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,32 +22,31 @@ public class OneToOneApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner ->{
-//			createInstructor(appDAO);
-
-//			findInstructor(appDAO);
-
-//			deleteInstructor(appDAO);
-
-//			findInstructorDetail(appDAO);
-
-//			deleteInstructorDetail(appDAO);
-
-//			createInstructorWithCourses(appDAO);
-
-//			findInstructorWithCourse(appDAO);
-
-//			findCoursesForInstructor(appDAO); // find instructor courses by id witch LAZY fetch type
-
-//			findInstructorWithCoursesJoinFetch(appDAO);
-
-//			updateInstructor(appDAO);
-
-//			updateCourse(appDAO);
-
-//			deleteInstructor(appDAO);
-
-			deleteCourse(appDAO);
+			createCourseAndReviews(appDAO);
 		};
+	}
+
+	private void createCourseAndReviews(AppDAO appDAO) {
+
+		// create a course
+		Course tempCourse = new Course("Pacman - How To Score One Million Points");
+
+		// add some reviews
+		tempCourse.addReview(new Review("Great course .. loved it!!"));
+		tempCourse.addReview(new Review("LOL!! You awesome"));
+		tempCourse.addReview(new Review("GG dude"));
+		tempCourse.addReview(new Review("What a dumb course, you are are an idiot"));
+
+
+		// save the course and leverage the cascade all
+		System.out.println("Saving the course");
+		System.out.println(tempCourse);
+		System.out.println(tempCourse.getReviews());
+
+		appDAO.save(tempCourse);
+
+		System.out.println("DONE");
+
 	}
 
 	private void deleteCourse(AppDAO appDAO) {
