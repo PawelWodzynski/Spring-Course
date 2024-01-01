@@ -3,6 +3,7 @@ package com.OneToOne.dao;
 import com.OneToOne.entity.Course;
 import com.OneToOne.entity.Instructor;
 import com.OneToOne.entity.InstructorDetail;
+import com.OneToOne.entity.Student;
 
 import java.util.List;
 
@@ -35,4 +36,6 @@ public interface AppDAO {
     Course findCourseAndReviewsByCourseId(int theId);
 
     Course findCourseAndStudentsByCourseId(int theId);
+
+    Student findStudentAndCoursesByStudentId(int theId);
 }
