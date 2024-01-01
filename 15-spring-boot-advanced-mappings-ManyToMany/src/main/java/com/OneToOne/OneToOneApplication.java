@@ -28,8 +28,19 @@ public class OneToOneApplication {
 
 //			addMoreCoursesForStudent(appDAO);
 
-			deleteCourse(appDAO);
+//			deleteCourse(appDAO);
+
+			deleteStudent(appDAO);
 		};
+	}
+
+	private void deleteStudent(AppDAO appDAO) {
+
+		int theId = 1;
+		System.out.println("Deleting student id: " + theId);
+
+		appDAO.deleteStudentById(theId);
+
 	}
 
 	private void addMoreCoursesForStudent(AppDAO appDAO) {
