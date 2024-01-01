@@ -1,10 +1,7 @@
 package com.OneToOne;
 
 import com.OneToOne.dao.AppDAO;
-import com.OneToOne.entity.Course;
-import com.OneToOne.entity.Instructor;
-import com.OneToOne.entity.InstructorDetail;
-import com.OneToOne.entity.Review;
+import com.OneToOne.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +20,32 @@ public class OneToOneApplication {
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner ->{
 
+			createCourseAndStudents(appDAO);
+
 		};
+	}
+
+	private void createCourseAndStudents(AppDAO appDAO) {
+
+		// create a course
+		Course tempCourse = new Course("Pacman - How to Score One Million Points");
+
+		// create the students
+		Student tempStudent1 = new Student("John", "Doe", "blabla@blabla.bla");
+		Student tempStudent2 = new Student("John2", "Doe2", "b2222labla@blabla.bla");
+
+		// add students to the course
+		tempCourse.addStudent(tempStudent1);
+		tempCourse.addStudent(tempStudent2);
+
+		// save the course and associated students
+		System.out.println("Saving the course: " + tempCourse);
+		System.out.println("associated students " + tempCourse.getStudents());
+
+		appDAO.save(tempCourse);
+
+		System.out.println("DONE!");
+
 	}
 
 	private void deleteCourseAndReviews(AppDAO appDAO) {
