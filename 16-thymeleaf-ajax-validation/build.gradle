@@ -1,0 +1,55 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.2'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'jstest'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+
+
+
+// Starter for unit testing
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+// Spring Boot Starter for web applications
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+// Spring Boot developer tools (automatic application reloading, etc.)
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+// Spring Boot Starter for REST in Spring Data
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+
+// Spring Boot Starter for Thymeleaf (template engine)
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+// Spring Boot Starter for validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
