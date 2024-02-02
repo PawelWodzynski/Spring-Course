@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VALIDATION-TEST</title>
+
+    <script src="validationScript.js" defer></script>
+
 </head>
 <body>
 
@@ -12,58 +15,14 @@
 <div id="output"></div>
 
 <form id="homieForm" th:action="@{/validation}" th:object="${homie}" method="POST" onsubmit="submitForm(event)">
+    Name of Homie : <input type="text" th:field="*{homieName}"/>
+    <div id="homieNameResult"></div>
 
-    Homie Name: <input type="text" th:field="*{homieName}"/>
+    Gang name of homie : <input type="text" th:field="*{homieGang}"/>
+    <div id="homieGangResult"></div>
 
-    <input id="getDataButton" type="button" value="Submit"/>
-
+    <input id="getDataButton" type="submit" value="Submit"/>
 </form>
-
-
-
-<script>
-
-    function submitForm(event) {
-        event.preventDefault(); // Stop the form's default behavior
-        document.getElementById('getDataButton').click(); // Trigger a button click event
-    }
-
-
-    // Add an event listener for the click event on the button with id 'getDataButton'
-    document.getElementById('getDataButton').addEventListener('click', async (e) => {
-
-        try {
-            // Retrieve data from the form with id 'homieForm' using the FormData object
-            const formData = new FormData(document.getElementById('homieForm'));
-
-            // Invoke the asynchronous fetch function to send data to the 'http://localhost:8080/validation' endpoint using the POST method
-            const response = await fetch('http://localhost:8080/validation', {
-                method: 'POST',
-                body: formData
-            });
-
-            // Wait for the response to be processed as JSON
-            const data = await response.json();
-
-            // Check if the response is OK (status 200)
-            if (response.ok) {
-                // If the response is OK, set the text in the element with id 'output' to 'Success: homie is homie'
-                document.getElementById('output').innerText = 'Success: homie is homie';
-            } else {
-                // If the response is not OK, prepare an error message based on the data from the response
-                const errorMessages = data.errors ? data.errors.join(', ') : 'Unknown error';
-
-                // Set the text in the element with id 'output' to the validation error message
-                document.getElementById('output').innerText = `Validation errors: ${errorMessages}`;
-            }
-        } catch (error) {
-            // If an error occurs during the fetch operation, set the text in the element with id 'output' to the error message
-            document.getElementById('output').innerText = `Error during fetch: ${error.message}`;
-        }
-    });
-
-</script>
-
 
 </body>
 </html>
